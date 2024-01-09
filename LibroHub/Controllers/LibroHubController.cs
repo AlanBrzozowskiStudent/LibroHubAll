@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LibroHub.Application.LibroHub.Commands.CreateLibroHub;
+using LibroHub.Application.LibroHub.Commands.DeleteLibroHub;
 using LibroHub.Application.LibroHub.Commands.EditLibroHub;
 using LibroHub.Application.LibroHub.Queries.GetLibroHubByEncodedName;
 using LibroHub.Application.LibroHub.Quires.GetAllLibroHubQuery;
@@ -66,6 +67,25 @@ namespace LibroHub.MVC.Controllers
             await _mediator.Send(command);
             return RedirectToAction(nameof(Index));
         }
+
+        [Route("LibroHub/{encodedName}/Delete")]
+        [Authorize]
+        public async Task<IActionResult> Delete(string encodedName)
+        {
+            //działa ładnie wyświetla
+            var dto = await _mediator.Send(new GetLibroHubByEncodedNameQuery(encodedName));
+            return View(dto);
+        }
+
+        [HttpPost]
+        [Route("LibroHub/{encodedName}/Delete")]
+        public async Task<IActionResult> Delete(string encodedName, DeleteLibroHubCommand command)
+        {
+            // akcja na bazie danych na ususwanie książki
+            await _mediator.Send(command); //komenda na usuwanie 
+            return RedirectToAction(nameof(Index)); //cofa na indeks
+        }
+
 
         [Authorize]
         public IActionResult Create()

@@ -1,11 +1,6 @@
 ﻿using LibroHub.Domain.Interfaces;
 using LibroHub.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibroHub.Infrastructure.Repositories
 {
@@ -18,7 +13,7 @@ namespace LibroHub.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        //edycja
+        //edycja książki
         public Task Commit()
          => _dbContext.SaveChangesAsync();
 
@@ -36,5 +31,12 @@ namespace LibroHub.Infrastructure.Repositories
 
         public Task<Domain.Entities.LibroHub?> GetByName(string name)
             => _dbContext.LibroHub.FirstOrDefaultAsync(cw => cw.Name.ToLower() == name.ToLower());
+
+        public async Task Delete(Domain.Entities.LibroHub libroHub)
+        {
+            //https://learn.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove?view=efcore-8.0
+            _dbContext.LibroHub.Remove(libroHub);
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

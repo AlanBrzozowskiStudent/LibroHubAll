@@ -1,0 +1,14 @@
+﻿@model LibroHub.Application.LibroHub.LibroHubDto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="d-flex align-items-center justify-content-center">Are you sure you want to delete the book: @Model.Name ?</h1>
+
+<div class="d-flex align-items-center justify-content-center">
+    <form asp-controller="LibroHub" asp-action="Delete" asp-route-encodedName="@Model.EncodedName" method="post">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+    </form>
+</div>

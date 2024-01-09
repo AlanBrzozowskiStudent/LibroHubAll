@@ -1,54 +1,72 @@
 ﻿@using LibroHub.Application.LibroHub.Commands.CreateLibroHub;
 
 @model CreateLibroHubCommand
-<h1>Add Book</h1>
 
-<hr />
+@{
+    ViewData["Title"] = "Add Book";
+}
 
-<div class="row">
-    <div class="col-md-4">
-        <form action="/LibroHub/Create" method="post">
-            <div class="form-group mb-3">
-                <label class="control-label" asp-for="Name">Name</label>
-                <input class="form-control" type="text" asp-for="Name">
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
+<div class="container">
+    <h1 class="text-center text-primary mt-5">Add Book</h1>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="/LibroHub/Create" method="post">
+                <div class="form-group mb-3">
+                    <label class="control-label" asp-for="Name">Title*</label>
+                    <input class="form-control" type="text" asp-for="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
 
-            <div class="form-group mb-3">
-                <label class="control-label" asp-for="Description">Description</label>
-                <input class="form-control" type="text" asp-for="Description">
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
+                <div class="form-group mb-3">
+                    <label class="control-label" asp-for="Author">Author*</label>
+                    <input class="form-control" type="text" asp-for="Author">
+                    <span asp-validation-for="Author" class="text-danger"></span>
+                </div>
 
-            <div class="form-group mb-3">
-                <label class="control-label" asp-for="Description">About</label>
-                <input class="form-control" type="text" asp-for="About">
-            </div>
+                <div class="form-group mb-3">
+                    <label class="control-label" asp-for="Description">Description</label>
+                    <input class="form-control" type="text" asp-for="Description">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
 
-            <div class="form-group mb-3">
-                <label class="control-label" asp-for="BookCategory">Book Category</label>
-                <input class="form-control" type="text" asp-for="BookCategory">
-                <span asp-validation-for="BookCategory" class="text-danger"></span>
-            </div>
+                <div class="form-group mb-3">
+                    <label class="control-label" asp-for="BookCategory">Book Category</label>
+                    <select class="form-control" asp-for="BookCategory" size="1">
+                        <option selected disabled>Choose Category</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Biography">Biography</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span asp-validation-for="BookCategory" class="text-danger"></span>
+                </div>
 
-            <div class="form-group mb-3">
-                <label class="control-label" asp-for="Author">Author</label>
-                <input class="form-control" type="text" asp-for="Author">
-            </div>
+                <div class="form-group mb-3">
+                    <label class="control-label" asp-for="PageNumber">Page Number</label>
+                    <input class="form-control" type="text" asp-for="PageNumber">
+                    <span asp-validation-for="PageNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="control-label" asp-for="Rating">Rating* (1-10) Where 10 means a wonderful book</label>
+                    <input class="form-control" type="text" asp-for="Rating">
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
 
-            <div class="form-group mb-3">
-                <label class="control-label" asp-for="PageNumber">Page Number</label>
-                <input class="form-control" type="text" asp-for="PageNumber">
-            </div>
-            <div class="form-group mb-3">
-                <label class="control-label" asp-for="Rating">Rating (1-10)</label>
-                <input class="form-control" type="text" asp-for="Rating">
-            </div>
+                <div class="form-group mb-3">
+                    <label class="control-label" asp-for="About">Your opinion about the book</label>
+                    <textarea class="form-control" rows="5" style="width:100%" asp-for="About"></textarea>
+                    <span asp-validation-for="About" class="text-danger"></span>
+                </div>
 
-            <div class="form-group mb-3">
-                <input type="submit" value="Create" class="btn btn-primary">
-            </div>
-        </form>
+                <div class="form-group mb-3">
+                    <input type="submit" value="Create" class="btn btn-primary">
+                    <a asp-action="Index" class="btn btn-outline-secondary ">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

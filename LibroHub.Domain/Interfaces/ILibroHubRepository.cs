@@ -8,10 +8,12 @@ namespace LibroHub.Domain.Interfaces
 {
     public interface ILibroHubRepository
     {
+        //dodawać w repository
         Task Create(Domain.Entities.LibroHub libroHub);
         Task<Domain.Entities.LibroHub?> GetByName(string name);
         Task<IEnumerable<Domain.Entities.LibroHub>> GetAll();
         Task<Domain.Entities.LibroHub> GetByEncodedName(string encodedName);
         Task Commit();
+        Task Delete(Domain.Entities.LibroHub libroHub);
     }
 }

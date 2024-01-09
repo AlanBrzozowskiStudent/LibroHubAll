@@ -1,57 +1,23 @@
 ﻿@model LibroHub.Application.LibroHub.LibroHubDto
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = $"Details of {Model.Name}";
 }
 
-<h1>@Model.Name szczegóły</h1>
-
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.About)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.About)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BookCategory)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BookCategory)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PageNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PageNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-    </dl>
-</div>
-<div>
-    @if (Model.IsEditable)
-    {
-        <a class="btn btn-outline-secondary " asp-controller="LibroHub" asp-action="Edit" asp-route-encodedName="@Model.EncodedName">Edit</a>
-    }
-    
-    <a asp-action="Index">Back to List</a>
+<div class="container">
+    <div class="card mx-auto my-5" style="width: 35rem;">
+        <div class="card-body">
+            <h2 class="card-title">@Model.Name</h2>
+            <p class="card-text"><strong>Author: </strong>@Model.Author</p>
+            <p class="card-text"><strong>Description: </strong>@Model.Description</p>
+            <p class="card-text"><strong>Category: </strong>@Model.BookCategory</p>
+            <p class="card-text"><strong>Page Number: </strong>@Model.PageNumber</p>
+            <p class="card-text"><strong>Rating: </strong>@Model.Rating</p>
+            <p class="card-text"><strong>Your opinion: </strong>@Model.About</p>
+            <div class="d-flex justify-content-between align-items-center">
+            <a class="btn btn-primary" asp-controller="LibroHub" asp-action="Edit" asp-route-encodedName="@Model.EncodedName">Edit</a>
+            <a asp-action="Index" class="btn btn-outline-primary ">Back to List</a>
+            </div>
+        </div>
+    </div>
 </div>
