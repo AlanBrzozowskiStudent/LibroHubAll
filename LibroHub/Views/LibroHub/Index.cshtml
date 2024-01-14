@@ -12,7 +12,7 @@
 </div>
 
 <p>
-    <a asp-action="Create" class="btn btn-secondary">Add book</a>
+    <a asp-action="Create" class="btn btn-secondary shadow">Add book</a>
 </p>
 
 <div class="row">
@@ -20,14 +20,14 @@
     {
         @if (item.IsEditable)
         {
-            <div class="card m-4" style="width: 20rem;">
+            <div class="card m-4 shadow" style="width: 20rem;">
                 <div class="card-body">
                     <h3 class="card-title">@item.Name</h3>
                     <p class="card-text">@item.Author</p>
                     <p class="card-text">@item.Rating/10</p>
-                    <a class="btn btn-primary" asp-controller="LibroHub" asp-action="Details" asp-route-encodedName="@item.EncodedName">Details</a>
-                    <a class="btn btn-outline-secondary " asp-controller="LibroHub" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edit</a>
-                    <a class="btn btn-danger" asp-controller="LibroHub" asp-action="Delete" asp-route-encodedName="@item.EncodedName">Delete</a>
+                    <a class="btn btn-primary shadow-sm" asp-controller="LibroHub" asp-action="Details" asp-route-encodedName="@item.EncodedName">Details</a>
+                    <a class="btn btn-outline-secondary shadow-sm" asp-controller="LibroHub" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edit</a>
+                    <a class="btn btn-danger shadow-sm" asp-controller="LibroHub" asp-action="Delete" asp-route-encodedName="@item.EncodedName">Delete</a>
                 </div>
             </div>
         }
